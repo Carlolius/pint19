@@ -9,7 +9,7 @@ client_secret = 'e3824d7c0cb94205ac4bb0d575f61306'
 
 user = 'username'
 desired_scope = 'playlist-modify-private'
-uri = 'http://google.com'  # Esta dirección es al a que se redirige después de aceptar el Token.
+uri = 'http://google.com/'  # Esta dirección es al a que se redirige después de aceptar el Token.
 # cache_path = '/path/donde/se/guardan/las/credenciales'
 token = util.prompt_for_user_token(username=user,
                                    scope=desired_scope,
