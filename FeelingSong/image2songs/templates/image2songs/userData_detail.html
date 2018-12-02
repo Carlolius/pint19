@@ -1,0 +1,20 @@
+{% extends "image2songs/base.html" %} {%block content%} {% if p %}
+<div class="col-md-7">
+	<a href="{% url 'detail' p.id %}">
+		  <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x100" alt="">
+		</a>
+</div>
+<div class="col-md-5">
+	<h3>{{ p.name }}</h3>
+	<p>Anotaciones</p>
+</div>
+
+{% if feeling_list %}
+<ul>
+	{% for f in feeling_list %}
+	<div class="row">
+		<li> {{f.field_1 }} : {{ f.field_2 }} : {{ f.field_3 }} : {{ f.field_4 }} : {{ f.field_5 }} : {{ f.field_6 }} : {{ f.field_7 }}
+	</div>
+	<hr> {% endfor %}
+</ul>
+{% else %} No hay ListScore para este usuario {% endif %} {% else %} Lista no encontrada {% endif %} {% endblock %}
