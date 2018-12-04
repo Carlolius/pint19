@@ -13,7 +13,7 @@
 <ul>
 	{% for f in feeling_list %}
 	<div class="row">
-		<li> {{f.field_1 }} : {{ f.field_2 }} : {{ f.field_3 }} : {{ f.field_4 }} : {{ f.field_5 }} : {{ f.field_6 }} : {{ f.field_7 }}
+		<li> {{f.email }} : {{ f.happiness }} : {{ f.anger }} : {{ f.neutral }} : {{ f.sadness }} : {{ f.fear }} : {{ f.surprise }} : {{f.disgust}}
 	</div>
 	<hr> {% endfor %}
 </ul>
