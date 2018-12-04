@@ -8,7 +8,8 @@ client_secret = 'e3824d7c0cb94205ac4bb0d575f61306'
 
 
 # Obtención del token
-desired_scope = 'user-top-read'
+desired_scope = 'user-top-read playlist-modify-private playlist-read-collaborative playlist-modify-public ' \
+                'playlist-read-private'
 uri = 'http://google.com/'  # Esta dirección es al a que se redirige después de aceptar el Token.
 # cache_path = '/path/donde/se/guardan/las/credenciales'
 token = util.prompt_for_user_token(username='username',
@@ -20,8 +21,7 @@ token = util.prompt_for_user_token(username='username',
                                    )
 sp = spotipy.Spotify(auth=token)
 
-usuario = sp.current_user()  # Se obtiene el nombre de usuario.
-user = usuario['id']
+user = (sp.current_user())['id']  # Se obtiene el nombre de usuario.
 
 # Emociones inventadas, esto tendría que venir del Face++
 happiness = 0.039
