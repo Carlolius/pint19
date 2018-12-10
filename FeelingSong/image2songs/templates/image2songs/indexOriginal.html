@@ -1,0 +1,17 @@
+ {% extends "image2songs/base.html" %} {%block content%} {% if userData_list %} {% for p in userData_list %}
+<div class="row">
+	<div class="col-md-7">
+		<a href="{% url 'detail' p.id %}">
+		<img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x100" alt="">
+	  </a>
+	</div>
+	<div class="col-md-5">
+		<h3>{{ p.name }}</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate.
+			Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+		<a class="btn btn-primary" href="{% url 'detail' p.id %}">Ver Score</a>
+	</div>
+</div>
+<hr> {% endfor %} {% else %}
+<p> No existen usuarios </p>
+{% endif %} {% endblock %}
