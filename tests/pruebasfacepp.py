@@ -10,17 +10,21 @@ image_type = 'url'
 attributes = 'emotion'
 
 data = {
-        'api_key': key,
-        'api_secret': secret,
-        'image_url': image_url,
-        'return_attributes': attributes
-        }
+    'api_key': key,
+    'api_secret': secret,
+    'image_url': image_url,
+    'return_attributes': attributes
+}
 
 if image_type == 'file':
-        image = {'image_file': open(image_file, 'rb')}
+    image = {'image_file': open(image_file, 'rb')}
 else:
-        data['image_url'] = image_url
+    data['image_url'] = image_url
 
-a = requests.post(http_url, params=data, files=image)  # no es necesario pasar el parámetro files
-print(a.status_code, a.reason)
-print(a.text)
+# no es necesario pasar el parámetro files
+a = requests.post(http_url, params=data, files=image)
+# print(a.status_code, a.reason)
+# print(a.text)
+decodedFeelings = a.json()
+# print(decodedFeelings)
+print(decodedFeelings['faces'][0]['attributes']['emotion'])
