@@ -22,14 +22,7 @@ if image_type == 'file':
 else:
     data['image_url'] = image_url
 
-# no es necesario pasar el parámetro files
-a = requests.post(http_url, params=data, files=image)
-# print(a.status_code, a.reason)
-# print(a.text)
-decodedFeelings = a.json()
-# print(decodedFeelings)
-# print(decodedFeelings['faces'][0]['attributes']['emotion'])
-
 
 def obtainFeelings():
-    return(decodedFeelings)
+    feelings = requests.post(http_url, params=data, files=image)
+    return(feelings.json())

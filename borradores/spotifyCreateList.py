@@ -1,13 +1,11 @@
 import spotipy
 import spotipy.util as util
 import datetime
-import pruebasfacepp
+import obtainFeelings
 
 # Credenciales de la API
 client_id = '86c70d9849ba4ba3b8c1a0d7590308d2'
 client_secret = 'e3824d7c0cb94205ac4bb0d575f61306'
-
-
 # Obtención del token
 desired_scope = 'user-top-read playlist-modify-private playlist-read-collaborative playlist-modify-public ' \
                 'playlist-read-private'
@@ -20,22 +18,13 @@ token = util.prompt_for_user_token(username='username',
                                    redirect_uri=uri,
                                    )
 sp = spotipy.Spotify(auth=token)
-
-# Se obtiene el nombre de usuario.
+# Se obtiene el usuario.
 user = (sp.current_user())['id']
 
-decodedFeelings = pruebasfacepp.obtainFeelings()
-# print(decodedFeelings['faces'][0]['attributes']['emotion']['happiness'])
+# Obtenemos los feelings pasados en la foto de obtainFeelings
+decodedFeelings = obtainFeelings.obtainFeelings()
 
-happiness = 0.039
-anger = 0.001
-neutral = 5.233
-sadness = 0.001
-fear = 0.001
-surprise = 94.723
-disgust = 0.001
-
-# Emociones recibidas
+# Asignación Json->Spotify
 danceability = decodedFeelings['faces'][0]['attributes']['emotion']['happiness']
 energy = decodedFeelings['faces'][0]['attributes']['emotion']['anger']
 instrumentalness = decodedFeelings['faces'][0]['attributes']['emotion']['neutral']
