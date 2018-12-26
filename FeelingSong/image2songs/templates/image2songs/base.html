@@ -10,18 +10,20 @@
     <meta name="author" content="">
 
     <title>FeelingSong</title>
-
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins">
+    
     <!-- Bootstrap core CSS -->
     <link href="{% static "image2songs/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{% static "image2songs/css/1-col-portfolio.css"%}" rel="stylesheet">
+    <link href="{% static "image2songs/css/base.css"%}" rel="stylesheet">
 
   </head>
 
   <body>
 
-    <!-- Navigation -->
+    <!-- Navigation
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">myCiao</a>
@@ -41,24 +43,55 @@
           </ul>
         </div>
       </div>
-    </nav>
-
+    </nav> -->
+    <!--Header-->
+    <!--header>
+      <nav>
+        <h1>FeelingSong</h1>
+      </nav>
+    </header-->
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <p class="m-0 text-center text-white">FeelingSong</p>
+      </header>
+      <!-- /.container -->
+    </footer>
     <!-- Page Content -->
+    
     <div class="container">
 
-      <!-- Page Heading -->
-    
-        <h1 class="my-4">Lista de usuarios
-        <small>.</small>
-      </h1>
-    
+      <!-- Contenido de la página -->
+        <div class="row">
+          <div class="col-md">
+            <h2 class="my-4">Contenido de la página
+            <small>.</small>
+            </h2>
+            <p>Aquí irá el contenido de la página con su correspondiente widget de Spoti.</p>
+          </div>
+          <div class="col-md-4" id="credenciales">
+            <img src="{% static "image2songs/images/user.jpeg"%}"  id="usuarioI">
+            <h3 class="my-4" id="usuarioT">Usuario</h3>
+            <div class="row">
+              <div class="col-md" id="botonCamara">
+                <input type="image" src="{% static "image2songs/images/camera.png"%}" id="camera"></input>
+              </div>
+              <div class="col-md" id="botonhistorial">
+                <input type="image" src="{% static "image2songs/images/historial.png"%}" id="historial"></input>
+              </div>
+            </div>
+            <div id="botonLogOut">
+              <button type="button" id="logout">Cerrar Sesión</button>
+            </div>
+          </div>
+        </div>
       {% block content %}{% endblock %}
 
     </div>
+
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-25 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; FeelingSong</p>
       </div>
