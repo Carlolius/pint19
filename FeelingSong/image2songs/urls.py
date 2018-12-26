@@ -8,4 +8,5 @@ urlpatterns = [
     url('base', views.base, name='base'),
     url('register', views.register, name='register'),
     url('webcam', views.webcam, name='webcam'),
+    url('historial', views.historial, name='historial'),
 ]

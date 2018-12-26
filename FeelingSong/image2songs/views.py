@@ -19,3 +19,7 @@ def register(request):
 
 def webcam(request):
     return render(request, 'image2songs/webcam.html')
+
+
+def historial(request):
+    return render(request, 'image2songs/historial.html')
