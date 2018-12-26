@@ -15,3 +15,7 @@ def base(request):
 
 def register(request):
     return render(request, 'image2songs/register.html')
+
+
+def webcam(request):
+    return render(request, 'image2songs/webcam.html')

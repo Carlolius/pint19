@@ -34,10 +34,8 @@
       <!-- Contenido de la página -->
         <div class="row">
           <div class="col-md">
-            <h2 class="my-4">Contenido de la página
-            <small>.</small>
-            </h2>
-            <p>Aquí irá el contenido de la página con su correspondiente widget de Spoti.</p>
+            {% block content %}
+            {% endblock %}
           </div>
           <div class="col-md-4" id="credenciales">
             <img src="{% static "image2songs/images/user.jpeg"%}"  id="usuarioI">
@@ -55,7 +53,7 @@
             </div>
           </div>
         </div>
-      {% block content %}{% endblock %}
+      
 
     </div>
 

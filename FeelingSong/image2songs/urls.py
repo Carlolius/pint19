@@ -7,4 +7,5 @@ urlpatterns = [
     # url(r'^(?P<userData_id>\d+)/$',views.detail,name='detail'),
     url('base', views.base, name='base'),
     url('register', views.register, name='register'),
+    url('webcam', views.webcam, name='webcam'),
 ]
