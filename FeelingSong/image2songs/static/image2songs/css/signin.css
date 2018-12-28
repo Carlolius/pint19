@@ -10,7 +10,7 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 530px;
+  max-width: 630px;
   padding: 15px;
   margin: auto;
   background-color: #c2c2c2;
@@ -53,12 +53,6 @@ body {
   border-bottom-left-radius: 0;
 }
 
-#repeatPassword {
-  margin-bottom: 10px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
 #id_username {
   border-radius: 5px;
 }
@@ -74,7 +68,29 @@ label[for="id_username"] {
   border-radius: 5px;
 }
 
+#id_password1 {
+  border-radius: 5px;
+}
+
+#id_password2 {
+  border-radius: 5px;
+}
+
 label[for="id_password"] {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  margin-bottom: -2px;
+}
+
+label[for="id_password1"] {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  margin-bottom: -2px;
+}
+
+label[for="id_password2"] {
   display: block;
   padding-left: 15px;
   text-indent: -15px;
@@ -83,4 +99,19 @@ label[for="id_password"] {
 
 #logo {
   margin-top: 10px;
+}
+
+.helptext {
+  display: none;
+}
+
+ul {
+  display: none;
+}
+
+#register {
+  width: 50%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
