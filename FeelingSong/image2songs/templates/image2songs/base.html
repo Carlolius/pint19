@@ -29,35 +29,43 @@
     </footer>
     <!-- Page Content -->
     
-    <div class="container">
+    {% if user.is_authenticated %}
+      <div class="container">
 
-      <!-- Contenido de la página -->
-        <div class="row">
-          <div class="col-md">
-            {% block content %}
-            {% endblock %}
-          </div>
-          <div class="col-md-4" id="credenciales">
-            <img src="{% static "image2songs/images/user.jpeg"%}"  id="usuarioI">
-            <h3 class="my-4" id="usuarioT">Usuario</h3>
-            <div class="row">
-              <div class="col-md" id="botonCamara">
-                <input type="image" src="{% static "image2songs/images/camera.png"%}" id="camera"></input>
+        <!-- Contenido de la página -->
+          <div class="row">
+            <div class="col-md">
+              {% block content %}
+              {% endblock %}
+            </div>
+            <div class="col-md-4" id="credenciales">
+              <img src="{% static "image2songs/images/user.jpeg"%}"  id="usuarioI">
+              <h3 class="my-4" id="usuarioT">{{ user.get_username }}</h3>
+              <div class="row">
+                <div class="col-md" id="botonCamara">
+                  <input type="image" src="{% static "image2songs/images/camera.png"%}" id="camera"></input>
+                </div>
+                <div class="col-md" id="botonhistorial">
+                  <input type="image" src="{% static "image2songs/images/historial.png"%}" id="historial"></input>
+                </div>
               </div>
-              <div class="col-md" id="botonhistorial">
-                <input type="image" src="{% static "image2songs/images/historial.png"%}" id="historial"></input>
+              <div id="lineadivisoria">
+              </div>
+              <div id="botonLogOut">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="logout">Cerrar Sesión</button>
               </div>
             </div>
-            <div id="lineadivisoria">
-            </div>
-            <div id="botonLogOut">
-              <button class="btn btn-lg btn-primary btn-block" type="submit" id="logout">Cerrar Sesión</button>
-            </div>
           </div>
-        </div>
-      
+      </div>
+    {% else %}
 
-    </div>
+    <!--JavaScript a saco-->
+    <script>
+    window.onload = function() {
+      location.replace("http://localhost:8000/image2songs/login")
+    }
+    </script>
+    {% endif %}
 
     <!-- /.container -->
 
