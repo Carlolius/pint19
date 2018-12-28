@@ -34,3 +34,22 @@
     margin: auto;
     z-index: 1;
 }
+
+#confirmar {
+    position: absolute;
+    top: 75%;
+    padding: 0px;
+    right: 10%;
+    font-size: 2.5em;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: rgb(74, 243, 69);
+    margin: auto;
+    z-index: 1;
+    display: none;
+}
+
+#canvasImg {
+    display: none;
+}

@@ -109,8 +109,16 @@ ul {
   display: none;
 }
 
-#register {
+#signup {
   width: 50%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#informacion {
+  width: 30%;
+  background-color: #8b8989;
   margin-top: 10%;
   margin-left: auto;
   margin-right: auto;

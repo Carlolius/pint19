@@ -1,15 +1,13 @@
-// Elements for taking the snapshot
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 var video = document.getElementById('video');
 var snap = document.getElementById('snap');
+var confirmar = document.getElementById("confirmar")
 
-// Get access to the camera!
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({
         video: true
     }).then(function (stream) {
-        //video.src = window.URL.createObjectURL(stream);
         video.srcObject = stream;
         video.play();
     });
@@ -21,8 +19,16 @@ document.getElementById("snap").addEventListener("click", function () {
     if (canvas.style.display === "block") {
         canvas.style.display = "none";
         video.style.display = "block";
+        confirmar.style.display = "none";
     } else {
         canvas.style.display = "block";
         video.style.display = "none";
+        confirmar.style.display = "block";
+
     }
+});
+
+confirmar.addEventListener("click", function () {
+    var dataURL = canvas.toDataURL("image/png;base64");
+    document.getElementById('canvasImg').src = dataURL;
 });
