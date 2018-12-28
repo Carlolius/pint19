@@ -17,6 +17,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static "image2songs/css/1-col-portfolio.css"%}" rel="stylesheet">
     <link href="{% static "image2songs/css/base.css"%}" rel="stylesheet">
+    <link href="{% static "image2songs/css/webcam.css"%}" rel="stylesheet">
 
   </head>
 
@@ -43,10 +44,10 @@
               <h3 class="my-4" id="usuarioT">{{ user.get_username }}</h3>
               <div class="row">
                 <div class="col-md" id="botonCamara">
-                  <input type="image" src="{% static "image2songs/images/camera.png"%}" id="camera"></input>
+                  <a href="{% url 'webcam' %}"><input type="image" src="{% static "image2songs/images/camera.png"%}" id="camera"></input></a>
                 </div>
                 <div class="col-md" id="botonhistorial">
-                  <input type="image" src="{% static "image2songs/images/historial.png"%}" id="historial"></input>
+                  <a href="{% url 'index' %}"><input type="image" src="{% static "image2songs/images/historial.png"%}" id="historial"></input></a>
                 </div>
               </div>
               <div id="lineadivisoria">
