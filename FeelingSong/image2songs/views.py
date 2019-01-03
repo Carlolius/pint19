@@ -4,6 +4,7 @@ from image2songs.models import UserData, Feeling
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from .spotifyCreateList import createlist
 
 
 # Create your views here.
@@ -32,3 +33,9 @@ def webcam(request):
 
 def historial(request):
     return render(request, 'image2songs/historial.html')
+
+
+def upload(request):
+    if request.GET.get('url'):
+        createlist(request.GET.get('imageurl'))
+    return render(request, 'image2songs/upload.html')
