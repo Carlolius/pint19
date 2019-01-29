@@ -22,7 +22,7 @@ def obtainFeelings(imagen):
     if image_type == 'file':
         image = {'image_file': open(image_file, 'rb')}
     else:
-        data['image_url'] = image_url
+        data['image_url'] = open(image_url, 'rb')
 
     feelings = requests.post(http_url, params=data, files=image)
     return(feelings.json())

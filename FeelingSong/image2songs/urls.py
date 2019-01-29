@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(template_name="image2songs/login.html"), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(template_name="image2songs/base.html"), name='logout'),
     url('upload', views.upload, name='upload'),
+    url('process_image', views.process, name='process_image'),
 ]
