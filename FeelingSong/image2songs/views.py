@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .spotifyCreateList import createlist
-from .authenticateSpotify import savetoken
+from .authenticateSpotify import *
 
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
@@ -18,7 +18,13 @@ class SignUp(generic.CreateView):
 
 @csrf_protect
 def index(request):
-    return render(request, 'image2songs/index.html')
+    sp_oauth = gettoken(request)
+    token = sp_oauth.get_cached_token()
+    if token:
+        return render(request, 'image2songs/index.html')
+    else:
+        authenticate(request)
+        return render(request, 'image2songs/index.html')
 
 @csrf_protect
 def base(request):
@@ -45,7 +51,7 @@ def historial(request):
 @csrf_protect
 def upload(request):
     if request.GET.get('url'):
-        createlist(request.GET.get('imageurl'))
+        createlist(request, request.GET.get('imageurl'))
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
@@ -53,11 +59,11 @@ def process(request):
     if request.is_ajax():
         request_data = request.POST
         imageUrl = request_data['imageUrl']
-        createlist(imageUrl)
+        createlist(request, imageUrl)
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
 def callback(request):
     token = ((str(request).split(" "))[2])[:-2]
-    savetoken(token)
+    savetoken(request, token)
     return render(request, 'image2songs/callback.html')
