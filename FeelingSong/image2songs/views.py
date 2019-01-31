@@ -31,9 +31,6 @@ def register(request):
 def webcam(request):
     return render(request, 'image2songs/webcam.html')
 
-@csrf_protect
-def callback(request):
-    return render(request, 'image2songs/callback.html')
 
 @csrf_protect
 def historial(request):
@@ -54,9 +51,7 @@ def process(request):
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
-def token(request):
-    if request.is_ajax():
-        token = request.POST
-        print(token)
-        #Pasar el token a la terminal        
-    return render(request, 'image2songs/webcam.html')
+def callback(request):
+    token=((str(request).split(" "))[2])[28:-2]
+    print(token)
+    return render(request, 'image2songs/callback.html')

@@ -14,6 +14,5 @@ urlpatterns = [
     url(r'^logout/$', auth_views.LogoutView.as_view(template_name="image2songs/base.html"), name='logout'),
     url('upload', views.upload, name='upload'),
     url('process_image', views.process, name='process_image'),
-    url('token', views.token, name='token'),
     url('callback', views.callback , name='callback'),
 ]
