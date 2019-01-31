@@ -1,11 +1,5 @@
-<script>
-    window.onload=function(){
-    var spotifyAccessToken = parseHash(String(window.location.hash));
-    $.ajax({
-        method: 'POST',
-        url: 'token/',
-        data: spotifyAccessToken,
-    });
-    window.close();
-}
-</script>
+{% extends 'image2songs/base.html' %}
+{% block content %}
+<p>Se está capturando url para token</p>
+<script src="/static/image2songs/js/callback.js"></script>
+{% endblock %}
