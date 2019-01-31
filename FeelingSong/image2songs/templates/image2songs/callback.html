@@ -1,0 +1,11 @@
+<script>
+    window.onload=function(){
+    var spotifyAccessToken = parseHash(String(window.location.hash));
+    $.ajax({
+        method: 'POST',
+        url: 'token/',
+        data: spotifyAccessToken,
+    });
+    window.close();
+}
+</script>

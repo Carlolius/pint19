@@ -12,7 +12,7 @@ def createlist(imagen):
     desired_scope = 'user-top-read playlist-modify-private playlist-read-collaborative playlist-modify-public ' \
                     'playlist-read-private'
     # Esta dirección es al a que se redirige después de aceptar el Token.
-    uri = 'http://google.com/'
+    uri = 'http://localhost:8000/image2songs/callback'
     token = util.prompt_for_user_token(username='username',
                                        scope=desired_scope,
                                        client_id=client_id,
