@@ -4,7 +4,8 @@ import datetime
 from .obtainFeelings import obtainFeelings
 
 
-def createlist(imagen):
+def createlist(request,imagen):
+    print("CREATE LIST " + str(request.user))
     # Credenciales de la API
     client_id = '86c70d9849ba4ba3b8c1a0d7590308d2'
     client_secret = 'e3824d7c0cb94205ac4bb0d575f61306'
@@ -22,6 +23,7 @@ def createlist(imagen):
     sp = spotipy.Spotify(auth=token)
     # Se obtiene el usuario.
     user = (sp.current_user())['id']
+    print(sp) 
 
     # Obtenemos los feelings pasados en la foto de obtainFeelings
     decodedFeelings = obtainFeelings(imagen)

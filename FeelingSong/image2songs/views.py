@@ -33,6 +33,8 @@ def webcam(request):
 
 @csrf_protect
 def callback(request):
+    print("Holac")
+    print(request)
     return render(request, 'image2songs/callback.html')
 
 @csrf_protect
@@ -42,7 +44,7 @@ def historial(request):
 @csrf_protect
 def upload(request):
     if request.GET.get('url'):
-        createlist(request.GET.get('imageurl'))
+        createlist(request,request.GET.get('imageurl'))
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
@@ -50,7 +52,7 @@ def process(request):
     if request.is_ajax():
         request_data = request.POST
         imageUrl = request_data['imageUrl']
-        createlist(imageUrl)
+        createlist(request,imageUrl)
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
