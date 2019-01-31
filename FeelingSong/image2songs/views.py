@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .spotifyCreateList import createlist
+from .authenticateSpotify import savetoken
 
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
@@ -52,6 +53,6 @@ def process(request):
 
 @csrf_exempt
 def callback(request):
-    token=((str(request).split(" "))[2])[28:-2]
-    print(token)
+    token = ((str(request).split(" "))[2])[:-2]
+    savetoken(token)
     return render(request, 'image2songs/callback.html')

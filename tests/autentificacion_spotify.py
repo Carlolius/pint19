@@ -7,7 +7,7 @@ import spotipy.util as util
 client_id = '86c70d9849ba4ba3b8c1a0d7590308d2'
 client_secret = 'e3824d7c0cb94205ac4bb0d575f61306'
 
-user = 'username'
+user = 'user'
 desired_scope = 'user-top-read playlist-modify-private playlist-read-collaborative playlist-modify-public ' \
                 'playlist-read-private '
 uri = 'http://google.com/'  # Esta dirección es al a que se redirige después de aceptar el Token.

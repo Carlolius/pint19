@@ -2,9 +2,13 @@ import spotipy
 import spotipy.util as util
 import datetime
 from .obtainFeelings import obtainFeelings
+from .authenticateSpotify import authenticate
+from spotipy import oauth2
 
 
 def createlist(imagen):
+    authenticate()
+    """
     # Credenciales de la API
     client_id = '86c70d9849ba4ba3b8c1a0d7590308d2'
     client_secret = 'e3824d7c0cb94205ac4bb0d575f61306'
@@ -19,6 +23,8 @@ def createlist(imagen):
                                        client_secret=client_secret,
                                        redirect_uri=uri,
                                        )
+    """
+
     sp = spotipy.Spotify(auth=token)
     # Se obtiene el usuario.
     user = (sp.current_user())['id']
