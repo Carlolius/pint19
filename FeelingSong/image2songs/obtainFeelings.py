@@ -7,7 +7,7 @@ secret = "cY6uVoAA_57vpcD_mY9F6gaPVjmnQNqv"
 def obtainFeelings(request,imagen):
     # parameters
     image = {}  # inicialización de la variable vacía
-    image_file = './prueba.jpg'
+    image_file = imagen
     image_url = imagen
     image_type = 'url'
     attributes = 'emotion'

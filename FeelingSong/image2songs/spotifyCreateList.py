@@ -8,11 +8,12 @@ from spotipy import oauth2
 
 def createlist(request, imagen):
     
+    authenticate(request)
     sp_oauth = gettoken(request)
     token = sp_oauth.get_cached_token()
-    authenticate(request)
+
     if token:
-        sp = spotipy.Spotify(auth=token)
+        sp = spotipy.Spotify(auth=token['access_token'])
         # Se obtiene el usuario.
         user = (sp.current_user())['id']
 
@@ -48,6 +49,6 @@ def createlist(request, imagen):
                                                  target_speechiness=speechiness,
                                                  target_valence=valence)
             for song in recommendations['tracks']:
-                #  print(song['name'], '-', song['artists'][0]['name'])
+                print(song['name'], '-', song['artists'][0]['name'])
                 add = sp.user_playlist_add_tracks(user, playlist['id'], [song['id']])
         return None
