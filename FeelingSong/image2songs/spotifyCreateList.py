@@ -2,16 +2,17 @@ import spotipy
 import spotipy.util as util
 import datetime
 from .obtainFeelings import obtainFeelings
-from .authenticateSpotify import gettoken
+from .authenticateSpotify import *
 from spotipy import oauth2
 
 
 def createlist(request, imagen):
+    authenticate(request)
     sp_oauth = gettoken(request)
-
     token = sp_oauth.get_cached_token()
+
     if token:
-        sp = spotipy.Spotify(auth=token)
+        sp = spotipy.Spotify(auth=token['access_token'])
         # Se obtiene el usuario.
         user = (sp.current_user())['id']
 
@@ -50,3 +51,4 @@ def createlist(request, imagen):
                 #  print(song['name'], '-', song['artists'][0]['name'])
                 add = sp.user_playlist_add_tracks(user, playlist['id'], [song['id']])
         return None
+

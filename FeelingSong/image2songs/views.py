@@ -39,12 +39,6 @@ def webcam(request):
     return render(request, 'image2songs/webcam.html')
 
 @csrf_protect
-def callback(request):
-    print("Holac")
-    print(request)
-    return render(request, 'image2songs/callback.html')
-
-@csrf_protect
 def historial(request):
     return render(request, 'image2songs/historial.html')
 

@@ -29,5 +29,6 @@ def savetoken(request, url):
     sp_oauth = gettoken(request)
     code = sp_oauth.parse_response_code(url)
     token_info = sp_oauth.get_access_token(code)
-    print(token_info)
+    if not token_info:
+        print("No ha sido posible capturar el token de Spotify")
     return token_info
