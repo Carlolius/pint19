@@ -4,4 +4,9 @@
         <input type="text" name="imageurl"/>
         <input type="submit" value="Subir" name="url">
     </form>
+    <form action="#" method="get">
+        <input type="file" name="imagefile"/>
+        <input type="submit" value="Subir" name="file">
+    </form>
+    <a href="{% url 'webcam' %}" id="goToWebcam">Webcam</a>
 {% endblock %}

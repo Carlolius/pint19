@@ -28,17 +28,16 @@ document.getElementById("snap").addEventListener("click", function () {
     }
 });
 
-confirmar.addEventListener("click", function () {
-    var dataURL = canvas.toDataURL("image/png;base64");
+confirmar.addEventListener("click", function (el) {
+    var dataURL = canvas.toDataURL("image/png");
     var canvasImg=document.getElementById('canvasImg');
     canvasImg.src = dataURL;
-    $(document).ready(function() {
+    el.href=dataURL;
+    /*$(document).ready(function() {
         $.ajax({
             method: 'POST',
             url: 'process_image/',
             data: {'imageUrl': dataURL},
         });
-    });
-
-    console.log(dataURL);       
+    });*/   
 });

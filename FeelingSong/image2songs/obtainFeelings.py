@@ -4,7 +4,7 @@ key = "1jz_rcd_Fv5zm5ZYrP6mmRs3Tt0L1pG2"
 secret = "cY6uVoAA_57vpcD_mY9F6gaPVjmnQNqv"
 
 
-def obtainFeelings(imagen):
+def obtainFeelings(request,imagen):
     # parameters
     image = {}  # inicialización de la variable vacía
     image_file = './prueba.jpg'
@@ -19,7 +19,7 @@ def obtainFeelings(imagen):
         'return_attributes': attributes
     }
 
-    if image_type == 'file':
+    if request.GET.get('file'):
         image = {'image_file': open(image_file, 'rb')}
     else:
         data['image_url'] = image_url
