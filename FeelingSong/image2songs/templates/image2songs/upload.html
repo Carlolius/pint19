@@ -1,13 +1,13 @@
 {% extends 'image2songs/base.html' %}
 {% block content %}
     <form action="#" method="get">
-        <input type="text" name="imageurl"/>
-        <input type="submit" value="Subir" name="url">
+        <input type="text" name="imageurl"></input>
+        <button type="submit" name="url"></button>
     </form>
 {% csrf_token %}
     <form action="#" method="post" enctype="multipart/form-data">
-        <input type="file" name="imagefile"/>
-        <input type="submit" value="Subir" name="file">
+        <input type="file" name="imagefile"></input>
+        <button type="submit" href="{% url 'spotiPlayer' %}" name="file"></button>
     </form>
     <a href="{% url 'webcam' %}" id="goToWebcam">Webcam</a>
 {% endblock %}

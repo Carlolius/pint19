@@ -47,7 +47,7 @@ def historial(request):
 
 @csrf_exempt
 def upload(request):
-    if request.GET.get('url'):
+    if request.GET.get('imageurl'):
         createlist(request, request.GET.get('imageurl'))
     if request.method == 'POST' and request.FILES['imagefile']:
         myfile = request.FILES['imagefile']
@@ -72,3 +72,7 @@ def callback(request):
     token = ((str(request).split(" "))[2])[:-2]
     savetoken(request, token)
     return render(request, 'image2songs/callback.html')
+
+@csrf_exempt
+def spotiPlayer(request):
+    return render(request, 'image2songs/spotiPlayer.html')

@@ -15,4 +15,5 @@ urlpatterns = [
     url('upload', views.upload, name='upload'),
     url('process_image', views.process, name='process_image'),
     url('callback', views.callback , name='callback'),
+    url('spotiPlayer', views.spotiPlayer , name='spotiPlayer'),
 ]
