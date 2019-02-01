@@ -9,7 +9,6 @@ def obtainFeelings(request,imagen):
     image = {}  # inicialización de la variable vacía
     image_file = imagen
     image_url = imagen
-    image_type = 'url'
     attributes = 'emotion'
 
     data = {
@@ -19,7 +18,7 @@ def obtainFeelings(request,imagen):
         'return_attributes': attributes
     }
 
-    if request.GET.get('file'):
+    if request.method == 'POST':
         image = {'image_file': open(image_file, 'rb')}
     else:
         data['image_url'] = image_url

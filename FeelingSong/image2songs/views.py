@@ -6,6 +6,9 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .spotifyCreateList import createlist
 from .authenticateSpotify import *
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+import os
 
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
@@ -42,12 +45,18 @@ def webcam(request):
 def historial(request):
     return render(request, 'image2songs/historial.html')
 
-@csrf_protect
+@csrf_exempt
 def upload(request):
     if request.GET.get('url'):
         createlist(request, request.GET.get('imageurl'))
-    if request.GET.get('file'):
-        createlist(request, request.GET.get('imagefile'))
+    if request.method == 'POST' and request.FILES['imagefile']:
+        myfile = request.FILES['imagefile']
+        fs = FileSystemStorage()
+        imagen = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(imagen)
+        url="."+uploaded_file_url
+        createlist(request, url)
+        os.remove(url)
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
