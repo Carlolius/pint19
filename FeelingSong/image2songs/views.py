@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from image2songs.models import UserData, Feeling
+from image2songs.models import UserData
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -79,5 +79,7 @@ def callback(request):
     return render(request, 'image2songs/callback.html')
 
 @csrf_exempt
-def spotiPlayer(request):
-    return render(request, 'image2songs/spotiPlayer.html')
+def spotiPlayer(redirect, request):
+    if redirect == None:
+        return render(request, 'image2songs/spotiPlayer.html')
+    return render(request, 'image2songs/spotiPlayer + redirect')
