@@ -15,5 +15,6 @@ urlpatterns = [
     url('upload', views.upload, name='upload'),
     url('process_image', views.process, name='process_image'),
     url('callback', views.callback , name='callback'),
+    #Aquí Abajo, hay que conseguir con una expresión regular que siempre que pille spotiPlayer***lo que sea****** nos redirija a spotiPlayer****lo que sea****
     url('spotiPlayer', views.spotiPlayer , name='spotiPlayer'),
 ]

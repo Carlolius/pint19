@@ -8,6 +8,7 @@ from .spotifyCreateList import createlist
 from .authenticateSpotify import *
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.shortcuts import redirect
 import os
 
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -21,13 +22,7 @@ class SignUp(generic.CreateView):
 
 @csrf_protect
 def index(request):
-    sp_oauth = gettoken(request)
-    token = sp_oauth.get_cached_token()
-    if token:
-        return render(request, 'image2songs/index.html')
-    else:
-        authenticate(request)
-        return render(request, 'image2songs/index.html')
+    return render(request, 'image2songs/index.html')
 
 @csrf_protect
 def base(request):
@@ -47,16 +42,26 @@ def historial(request):
 
 @csrf_exempt
 def upload(request):
+    sp_oauth = gettoken(request)
+    token = sp_oauth.get_cached_token()
+    if not token:
+        authenticate(request)
     if request.GET.get('imageurl'):
-        createlist(request, request.GET.get('imageurl'))
+        playlistId=createlist(request, request.GET.get('imageurl'))
+        spotiURL='spotiPlayer?='+playl
+        #Necesitamos que el urls.py nos redireccione bien.
+        return redirect(spotiURL)
     if request.method == 'POST' and request.FILES['imagefile']:
         myfile = request.FILES['imagefile']
         fs = FileSystemStorage()
         imagen = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(imagen)
         url="."+uploaded_file_url
-        createlist(request, url)
+        playlistId=createlist(request, url)
         os.remove(url)
+        spotiURL='spotiPlayer?='+playlistId
+        #Necesitamos que el urls.py nos redireccione bien.
+        return redirect(spotiURL)
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
