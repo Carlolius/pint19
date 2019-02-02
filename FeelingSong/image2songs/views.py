@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from image2songs.models import UserData
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -49,8 +47,7 @@ def upload(request):
     if request.GET.get('imageurl'):
         playlistId=createlist(request, request.GET.get('imageurl'))
         spotiURL='spotiPlayer?='+playlistId
-        #Necesitamos que el urls.py nos redireccione bien.
-        return redirect(spotiURL)
+        return redirect('http://localhost:8000/image2songs/'+spotiURL)
     if request.method == 'POST' and request.FILES['imagefile']:
         myfile = request.FILES['imagefile']
         fs = FileSystemStorage()
@@ -60,8 +57,7 @@ def upload(request):
         playlistId=createlist(request, url)
         os.remove(url)
         spotiURL='spotiPlayer?='+playlistId
-        #Necesitamos que el urls.py nos redireccione bien.
-        return redirect(spotiURL)
+        return redirect('http://localhost:8000/image2songs/'+spotiURL)
     return render(request, 'image2songs/upload.html')
 
 @csrf_exempt
@@ -79,7 +75,5 @@ def callback(request):
     return render(request, 'image2songs/callback.html')
 
 @csrf_exempt
-def spotiPlayer(redirect, request):
-    if redirect == None:
-        return render(request, 'image2songs/spotiPlayer.html')
-    return render(request, 'image2songs/spotiPlayer + redirect')
+def spotiPlayer(request):
+    return render(request, 'image2songs/spotiPlayer.html')
