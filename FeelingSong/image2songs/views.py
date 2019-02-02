@@ -48,7 +48,7 @@ def upload(request):
         authenticate(request)
     if request.GET.get('imageurl'):
         playlistId=createlist(request, request.GET.get('imageurl'))
-        spotiURL='spotiPlayer?='+playl
+        spotiURL='spotiPlayer?='+playlistId
         #Necesitamos que el urls.py nos redireccione bien.
         return redirect(spotiURL)
     if request.method == 'POST' and request.FILES['imagefile']:
