@@ -8,6 +8,8 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import redirect
 import os
+import pandas as pd
+import sqlite3
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 # Create your views here.
@@ -19,6 +21,10 @@ class SignUp(generic.CreateView):
 
 @csrf_protect
 def index(request):
+    #Echar un vistazo ⏬⏬⏬
+    #cnx = sqlite3.connect('db.sqlite3')
+    #df = pd.read_sql_query("SELECT Feeling FROM default", cnx)
+    #df
     return render(request, 'image2songs/index.html')
 
 @csrf_protect
