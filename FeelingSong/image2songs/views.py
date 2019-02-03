@@ -8,7 +8,6 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import redirect
 import os
-
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 # Create your views here.
@@ -46,6 +45,7 @@ def upload(request):
         authenticate(request)
     if request.GET.get('imageurl'):
         playlistId=createlist(request, request.GET.get('imageurl'))
+        print(playlistId)
         spotiURL='spotiPlayer?='+playlistId
         return redirect('http://localhost:8000/image2songs/'+spotiURL)
     if request.method == 'POST' and request.FILES['imagefile']:
