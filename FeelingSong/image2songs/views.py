@@ -11,6 +11,7 @@ import os
 import pandas as pd
 import sqlite3
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from .models import Feeling
 
 # Create your views here.
 
@@ -21,10 +22,8 @@ class SignUp(generic.CreateView):
 
 @csrf_protect
 def index(request):
-    #Echar un vistazo ⏬⏬⏬
-    #cnx = sqlite3.connect('db.sqlite3')
-    #df = pd.read_sql_query("SELECT Feeling FROM default", cnx)
-    #df
+    feelings = Feeling.objects.filter(username=str(request.user.id))
+    # feelings es un queryset que contiene los datos del usuario logueado
     return render(request, 'image2songs/index.html')
 
 @csrf_protect

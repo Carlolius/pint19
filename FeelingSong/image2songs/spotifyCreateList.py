@@ -29,10 +29,17 @@ def createlist(request, imagen):
         loudness = (decodedFeelings['faces'][0]['attributes']['emotion']['fear'])*-1
         speechiness = decodedFeelings['faces'][0]['attributes']['emotion']['surprise']
         valence = (decodedFeelings['faces'][0]['attributes']['emotion']['disgust'])*-1
-        
 
         ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        feelings=Feeling(username=request.user, datetime=ts, happiness=danceability, anger=energy, neutral=instrumentalness, sadness=liveness, fear=(loudness*-1), surprise=speechiness, disgust=valence*-1 )
+        feelings = Feeling(username=request.user,
+                           datetime=ts,
+                           happiness=danceability,
+                           anger=energy,
+                           neutral=instrumentalness,
+                           sadness=liveness,
+                           fear=(loudness*-1),
+                           surprise=speechiness,
+                           disgust=valence*-1)
         feelings.save()
 
         # Crear playlist, crea una playlist con el timestamp para que no se llamen todas igual aunque no habría problema
