@@ -22,8 +22,8 @@ class SignUp(generic.CreateView):
 
 @csrf_protect
 def index(request):
-    feelings = Feeling.objects.filter(username=str(request.user.id))
-    # feelings es un queryset que contiene los datos del usuario logueado
+    feelings = pd.DataFrame(Feeling.objects.filter(username=str(request.user.id)).values())
+    print(feelings)
     return render(request, 'image2songs/index.html')
 
 @csrf_protect
