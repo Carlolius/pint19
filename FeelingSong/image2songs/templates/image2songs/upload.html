@@ -1,14 +1,31 @@
 {% extends 'image2songs/base.html' %}
 {% block content %}
-    <form action="#" method="get">
-        <p>https://img.s3wfg.com/web/img/images_uploaded/e/e/ep_dientes_sonrisa_620x350.jpg</p>
-        <input type="text" name="imageurl"></input>
-        <button type="submit" name="url"></button>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir foto</title>
+
+</head>
+<body style="background-color:#1db954;">
+    <form action="#" method="get" >
+        <h2>Sube tu imagen, o captúrala con la webcam!!</h2>
+        <br><br>
+        <input type="text" name="imageurl" placeholder= "indica la ruta a tu imagen"></input>
+        <button type="submit" name="url" value= "Enviar">Enviar</button>
+        <br>
+        <hr><br>
     </form>
 {% csrf_token %}
     <form action="#" method="post" enctype="multipart/form-data">
-        <input type="file" name="imagefile"></input>
-        <button type="submit" href="{% url 'spotiPlayer' %}" name="file"></button>
+        <input type="file" name="imagefile" style = "border: grey"></input>
+        <button type="submit" href="{% url 'spotiPlayer' %}" name="file">Subir</button>
     </form>
-    <a href="{% url 'webcam' %}" id="goToWebcam">Webcam</a>
+    <hr><br>
+    <a href="{% url 'webcam' %}" id="goToWebcam">Captura una imagen con la Webcam</a>
+    
+    <hr><br>
+</body>
+
 {% endblock %}
