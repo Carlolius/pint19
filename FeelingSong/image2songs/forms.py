@@ -32,27 +32,13 @@ class NewUserForm(forms.Form):
 
 
 class NewFeelingForm(forms.Form):
-    happiness = forms.IntegerField(label="Felicidad",
-                                   required=True
-                                   )
-    anger = forms.IntegerField(label="Enfado",
-                               required=True
-                               )
-    neutral = forms.IntegerField(label="Neutro",
-                                 required=True
-                                 )
-    sadness = forms.IntegerField(label="Tristeza",
-                                 required=True
-                                 )
-    fear = forms.IntegerField(label="Temor",
-                              required=True
-                              )
-    surprise = forms.IntegerField(label="Sorpresa",
-                                  required=True
-                                  )
-    disgust = forms.IntegerField(label="Asco",
-                                 required=True
-                                 )
+    happiness = forms.IntegerField(label="Felicidad", required=True)
+    anger = forms.IntegerField(label="Enfado", required=True)
+    neutral = forms.IntegerField(label="Neutro", required=True)
+    sadness = forms.IntegerField(label="Tristeza", required=True)
+    fear = forms.IntegerField(label="Temor", required=True)
+    surprise = forms.IntegerField(label="Sorpresa", required=True)
+    disgust = forms.IntegerField(label="Asco", required=True)
 
     def __init__(self, *args, **kwargs):
         super(NewFeelingForm, self).__init__(*args, **kwargs)

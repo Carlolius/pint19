@@ -3,18 +3,8 @@ from django.db import models
 # Create your models here.
 
 
-class UserData(models.Model):
-    email = models.CharField(max_length=30)
-    user = models.CharField(max_length=50)
-    name = models.CharField(max_length=20)
-    token_s = models.CharField(max_length=50)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Feeling(models.Model):
-    email = models.ForeignKey(UserData, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
     happiness = models.IntegerField()
     anger = models.IntegerField()
     neutral = models.IntegerField()
@@ -24,4 +14,4 @@ class Feeling(models.Model):
     disgust = models.IntegerField()
 
     def __unicode__(self):
-        return self.email
+        return self.username
