@@ -35,11 +35,15 @@ def index(request):
         if feelings.empty:
             print("DataFrame vacío")
         else:
-            feelings = feelings.drop(['datetime'], axis=1)
+            feelings.index = feelings['datetime']
+            feelings = feelings.drop(['datetime', 'id', 'username_id'], axis=1)
             print(feelings)
-            fig, ax = plt.subplots()
+            plt.figure()
             feelings.plot()
-            fig.savefig('./image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
+            plt.legend(loc='best')
+            plt.xlabel('Fecha')
+            plt.ylabel('Feelings')
+            plt.savefig('./image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
     return render(request, 'image2songs/index.html')
 
 @csrf_protect
