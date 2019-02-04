@@ -30,6 +30,8 @@ def index(request):
         try:
             copy('./image2songs/static/image2songs/images/graph.png',
                  './image2songs/static/image2songs/images/graphs/graph.png')
+            os.rename('./image2songs/static/image2songs/images/graphs/graph.png',
+                      './image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
         except:
             os.system("mkdir ./image2songs/static/image2songs/images/graphs")
             copy('./image2songs/static/image2songs/images/graph.png',
@@ -44,7 +46,7 @@ def index(request):
             plt.figure()
             feelings.plot()
             plt.legend(loc='best')
-            plt.xlabel('Fecha')
+            plt.xlabel('Time')
             plt.ylabel('Feelings')
             plt.savefig('./image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
 
