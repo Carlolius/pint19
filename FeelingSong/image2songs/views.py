@@ -10,7 +10,10 @@ import os
 import pandas as pd
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import Feeling
-#import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from shutil import copy
 
 # Create your views here.
 
@@ -24,15 +27,19 @@ class SignUp(generic.CreateView):
 def index(request):
     if str(request.user) is not 'AnonymousUser':
         feelings = pd.DataFrame(list(Feeling.objects.filter(username=str(request.user.id)).values()))
+        copy('./image2songs/static/image2songs/images/graph.png',
+             './image2songs/static/image2songs/images/graphs/graph.png')
+        os.rename('./image2songs/static/image2songs/images/graphs/graph.png',
+                  './image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
+
         if feelings.empty:
             print("DataFrame vacío")
         else:
             feelings = feelings.drop(['datetime'], axis=1)
             print(feelings)
-            #fig, ax = plt.subplots()
-            #feelings.plot()
-            #fig.savefig('my_plot.png')
-
+            fig, ax = plt.subplots()
+            feelings.plot()
+            fig.savefig('./image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
     return render(request, 'image2songs/index.html')
 
 @csrf_protect
