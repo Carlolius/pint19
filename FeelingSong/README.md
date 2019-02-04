@@ -3,7 +3,7 @@ Pratica de programación integrativa: Feeling2songs
 Para descargar la imágen:
 docker pull carlosmanoso/feeling
 
-Posteriomente ejecutaremos el contenedor en modo iterativo con este comando:
+Posteriomente ejecutaremos el contenedor en modo con este comando:
 docker run -p 8000:8000 feeling python3 manage.py runserver 0.0.0.0:8000
 
 Index:
