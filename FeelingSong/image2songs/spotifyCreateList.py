@@ -1,11 +1,9 @@
 import spotipy
-import spotipy.util as util
 import datetime
 from .obtainFeelings import obtainFeelings
 from .authenticateSpotify import gettoken, authenticate
-from spotipy import oauth2
-
 from .models import Feeling
+
 
 def createlist(request, imagen):
     
@@ -47,8 +45,8 @@ def createlist(request, imagen):
         nombreplaylist = ('Feeling song '+ts)
         #  print(nombreplaylist)
         playlist = sp.user_playlist_create(user, nombreplaylist, public=False)
-        # Añadir canciones a la playlist, obtiene los artistas más escuchados y después uno a uno busca recomendaciones con
-        # los objetivos de emociones que hemos especificado más arriba, luego los añade a la playlist.
+        # Añadir canciones a la playlist, obtiene los artistas más escuchados y después uno a uno busca recomendaciones
+        # con los objetivos de emociones que hemos especificado más arriba, luego los añade a la playlist.
         artists = sp.current_user_top_artists(time_range='medium_term', limit=5)
         for i, item in enumerate(artists['items']):
             #  print(i, item['name'])
@@ -63,4 +61,4 @@ def createlist(request, imagen):
             for song in recommendations['tracks']:
                 print(song['name'], '-', song['artists'][0]['name'])
                 add = sp.user_playlist_add_tracks(user, playlist['id'], [song['id']])
-        return ((playlist)['id'])
+        return playlist['id']
