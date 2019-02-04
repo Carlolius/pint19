@@ -4,16 +4,16 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .spotifyCreateList import createlist
 from .authenticateSpotify import *
-from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import redirect
 import os
 import pandas as pd
-import sqlite3
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import Feeling
+import matplotlib.pyplot as plt
 
 # Create your views here.
+
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -22,8 +22,17 @@ class SignUp(generic.CreateView):
 
 @csrf_protect
 def index(request):
-    feelings = pd.DataFrame(Feeling.objects.filter(username=str(request.user.id)).values())
-    print(feelings)
+    if str(request.user) is not 'AnonymousUser':
+        feelings = pd.DataFrame(list(Feeling.objects.filter(username=str(request.user.id)).values()))
+        if feelings.empty:
+            print("DataFrame vacío")
+        else:
+            feelings = feelings.drop(['datetime'], axis=1)
+            print(feelings)
+            fig, ax = plt.subplots()
+            feelings.plot()
+            fig.savefig('my_plot.png')
+
     return render(request, 'image2songs/index.html')
 
 @csrf_protect
