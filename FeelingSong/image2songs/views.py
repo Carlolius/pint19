@@ -73,7 +73,8 @@ def upload(request):
     sp_oauth = gettoken(request)
     token = sp_oauth.get_cached_token()
     if not token:
-        authenticate(request)
+        redirige = authenticate(request)
+        return redirect(redirige)
     if request.GET.get('imageurl'):
         playlistId=createlist(request, request.GET.get('imageurl'))
         print(playlistId)
