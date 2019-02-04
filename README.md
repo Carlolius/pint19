@@ -4,7 +4,7 @@ Para descargar la imágen:
 docker pull carlosmanoso/feeling
 
 Posteriomente ejecutaremos el contenedor en modo con este comando:
-docker run -p 8000:8000 feeling python3 manage.py runserver 0.0.0.0:8000
+docker run -p 8000:8000 carlosmanoso/feeling python3 manage.py runserver 0.0.0.0:8000
 
 Index:
 http://localhost:8000/image2songs
