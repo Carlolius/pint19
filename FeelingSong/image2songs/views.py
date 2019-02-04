@@ -27,10 +27,15 @@ class SignUp(generic.CreateView):
 def index(request):
     if str(request.user) is not 'AnonymousUser':
         feelings = pd.DataFrame(list(Feeling.objects.filter(username=str(request.user.id)).values()))
-        copy('./image2songs/static/image2songs/images/graph.png',
-             './image2songs/static/image2songs/images/graphs/graph.png')
-        os.rename('./image2songs/static/image2songs/images/graphs/graph.png',
-                  './image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
+        try:
+            copy('./image2songs/static/image2songs/images/graph.png',
+                 './image2songs/static/image2songs/images/graphs/graph.png')
+        except:
+            os.system("mkdir ./image2songs/static/image2songs/images/graphs")
+            copy('./image2songs/static/image2songs/images/graph.png',
+                 './image2songs/static/image2songs/images/graphs/graph.png')
+            os.rename('./image2songs/static/image2songs/images/graphs/graph.png',
+                      './image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
 
         if feelings.empty:
             print("DataFrame vacío")
