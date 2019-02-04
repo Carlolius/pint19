@@ -28,11 +28,11 @@ document.getElementById("snap").addEventListener("click", function () {
     }
 });
 
-confirmar.addEventListener("click", function (el) {
-    var dataURL = canvas.toDataURL("image/png");
+confirmar.addEventListener("click", function () {
+    var dataURL = canvas.toDataURL("image/png;base64");
     var canvasImg=document.getElementById('canvasImg');
     canvasImg.src = dataURL;
-    el.href=dataURL;
+    confirmar.href=dataURL;
     /*$(document).ready(function() {
         $.ajax({
             method: 'POST',
