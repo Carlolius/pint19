@@ -30,6 +30,8 @@ def index(request):
         try:
             copy('./image2songs/static/image2songs/images/graph.png',
                  './image2songs/static/image2songs/images/graphs/graph.png')
+            os.rename('./image2songs/static/image2songs/images/graphs/graph.png',
+                      './image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
         except:
             os.system("mkdir ./image2songs/static/image2songs/images/graphs")
             copy('./image2songs/static/image2songs/images/graph.png',
@@ -37,18 +39,17 @@ def index(request):
             os.rename('./image2songs/static/image2songs/images/graphs/graph.png',
                       './image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
 
-        if feelings.empty:
-            print("DataFrame vacío")
-        else:
+        if not feelings.empty:
             feelings.index = feelings['datetime']
             feelings = feelings.drop(['datetime', 'id', 'username_id'], axis=1)
             print(feelings)
             plt.figure()
             feelings.plot()
             plt.legend(loc='best')
-            plt.xlabel('Fecha')
+            plt.xlabel('Time')
             plt.ylabel('Feelings')
             plt.savefig('./image2songs/static/image2songs/images/graphs/'+str(request.user)+'.png')
+
     return render(request, 'image2songs/index.html')
 
 @csrf_protect
