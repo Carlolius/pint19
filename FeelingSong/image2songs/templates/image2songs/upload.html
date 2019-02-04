@@ -7,6 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir foto</title>
 
+    <style tipy="text/css" media="screen">
+        #spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
 </head>
 <body>
     <form action="#" method="get" >
@@ -14,6 +21,13 @@
         <br><br>
         <input type="text" name="imageurl" placeholder= "indica la ruta a tu imagen"></input>
         <button type="submit" name="url" value= "Enviar">Enviar</button>
+        
+        <div id="spinner" style="display: none;">
+            <img id="img-spinner" src="../../static/image2songs/images/spinner.gif" alt="Loading"/>
+        </div>
+
+        <script>$('#spinner').show();</script>
+
         <br>
         <hr><br>
     </form>
