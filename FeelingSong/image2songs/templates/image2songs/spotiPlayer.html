@@ -1,7 +1,8 @@
 {% extends 'image2songs/base.html' %}
 {% block content %}
-<iframe id="spotiPlayer" src="https://open.spotify.com/" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"style="height:95.5%;
+<iframe id="spotiPlayer" src="https://open.spotify.com/" frameborder="0" allowtransparency="true" allow="encrypted-media"style="height:80.5%;
 width:100%;overflow:hidden;"></iframe>
-<a id="botontw" target="_blank" href="">Twittear</a>
+<a id="botontw" target="_blank" href=""><image src="../../static/image2songs/images/twitter.png" width="50" height="50"></image></a>
+<a style="margin-left:30px; margin-top:10px;">Pulsa para twittear tu playlist</a>
 <script src="/static/image2songs/js/spotiPlayer.js"></script>
 {% endblock %}
