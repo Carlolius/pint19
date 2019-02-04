@@ -10,7 +10,7 @@ import os
 import pandas as pd
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import Feeling
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 # Create your views here.
 
@@ -29,9 +29,9 @@ def index(request):
         else:
             feelings = feelings.drop(['datetime'], axis=1)
             print(feelings)
-            fig, ax = plt.subplots()
-            feelings.plot()
-            fig.savefig('my_plot.png')
+            #fig, ax = plt.subplots()
+            #feelings.plot()
+            #fig.savefig('my_plot.png')
 
     return render(request, 'image2songs/index.html')
 
